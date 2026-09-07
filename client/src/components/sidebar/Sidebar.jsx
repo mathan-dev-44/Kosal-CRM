@@ -31,7 +31,7 @@ const Sidebar = () => {
       roles: ["ADMIN", "SALES"],
     },
     {
-      label: "Users",
+      label: "Employees",
       path: "/users",
       icon: "♟",
       roles: ["ADMIN"],
