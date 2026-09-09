@@ -10,14 +10,14 @@ import Leads from "./pages/leads/Leads.jsx";
 import ProtectedRoute from "./routes/ProtectedRoutes.jsx";
 import RoleRoute from "./routes/RoleRoute.jsx";
 
-import DashboardLayout from "./layouts/DashboardLayout.jsx";
+import DashboardLayout from "./Layouts/DashBoardLayout.jsx";
 import LeadDetails from "./pages/leads/LeadDetails.jsx";
 import Projects from "./pages/properties/Properties.jsx";
 import ProjectDetails from "./pages/properties/ProjectDetails.jsx";
 import Units from "./pages/properties/Units.jsx";
 
 import Bookings from "./pages/bookings/Bookings.jsx";
-import BookingDetails from "./pages/bookings/BookingDetails.jsx";
+import BookingDetails from "./pages/bookings/Bookingdetails.jsx";
 import Users from "./pages/users/Users.jsx";
 
 const App = () => {
