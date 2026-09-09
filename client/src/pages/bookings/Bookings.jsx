@@ -101,9 +101,11 @@ const Bookings = () => {
     <div className="p-6">
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Bookings</h1>
+          <h1 className="text-2xl font-bold  dark:text-zinc-300 text-slate-900">
+            Bookings
+          </h1>
 
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm  dark:text-zinc-300 text-slate-500">
             Manage property bookings.
           </p>
         </div>
@@ -111,7 +113,7 @@ const Bookings = () => {
         <button
           type="button"
           onClick={handleOpenCreate}
-          className="rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-slate-800"
+          className="rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-medium dark:bg-zinc-900 dark:text-zinc-400 text-white hover:bg-slate-800"
         >
           + Create Booking
         </button>
@@ -130,18 +132,20 @@ const Bookings = () => {
       )}
 
       {loading ? (
-        <div className="rounded-xl border border-slate-200 bg-white p-10 text-center">
+        <div className="rounded-xl border dark:bg-zinc-900 dark:text-zinc-400 border-slate-200 bg-white p-10 text-center">
           <div className="mx-auto h-8 w-8 animate-spin rounded-full border-4 border-slate-200 border-t-slate-900" />
 
-          <p className="mt-3 text-sm text-slate-500">Loading bookings...</p>
+          <p className="mt-3 text-sm  dark:text-zinc-400 text-slate-500">
+            Loading bookings...
+          </p>
         </div>
       ) : bookings.length === 0 ? (
-        <div className="rounded-xl border border-slate-200 bg-white p-10 text-center">
+        <div className="rounded-xl border dark:bg-zinc-900 dark:text-zinc-400 border-slate-200 bg-white p-10 text-center">
           <h2 className="text-lg font-semibold text-slate-900">
             No bookings found
           </h2>
 
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm dark:text-zinc-400 text-slate-500">
             Create your first property booking.
           </p>
 
@@ -154,51 +158,54 @@ const Bookings = () => {
           </button>
         </div>
       ) : (
-        <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+        <div className="overflow-hidden rounded-xl border dark:bg-zinc-900 dark:text-zinc-400 border-slate-200 bg-white">
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-slate-200">
-              <thead className="bg-slate-50">
+              <thead className="dark:bg-zinc-900 dark:text-zinc-400  bg-slate-50">
                 <tr>
-                  <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide dark:text-zinc-400 dark:text-zinc-400 text-slate-500">
                     Lead
                   </th>
 
-                  <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide dark:text-zinc-400 text-slate-500">
                     Property
                   </th>
 
-                  <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide dark:text-zinc-400 text-slate-500">
                     Unit
                   </th>
 
-                  <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide dark:text-zinc-400 text-slate-500">
                     Amount
                   </th>
 
-                  <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide dark:text-zinc-400 text-slate-500">
                     Booked By
                   </th>
 
-                  <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  <th className="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wide dark:text-zinc-400 text-slate-500">
                     Date
                   </th>
 
-                  <th className="px-5 py-3 text-right text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  <th className="px-5 py-3 text-right text-xs font-semibold uppercase tracking-wide dark:text-zinc-400 text-slate-500">
                     Action
                   </th>
                 </tr>
               </thead>
 
-              <tbody className="divide-y divide-slate-200">
+              <tbody className="divide-y dark:divide-slate-600 divide-slate-200">
                 {bookings.map((booking) => (
-                  <tr key={booking.id} className="hover:bg-slate-50">
+                  <tr
+                    key={booking.id}
+                    className="dark:hover:bg-zinc-800 hover:bg-slate-50"
+                  >
                     <td className="px-5 py-4">
                       <div>
-                        <p className="text-sm font-medium text-slate-900">
+                        <p className="text-sm font-medium dark:text-zinc-300 text-slate-900">
                           {booking.lead_name || "-"}
                         </p>
 
-                        <p className="mt-1 text-xs text-slate-500">
+                        <p className="mt-1 text-xs dark:text-zinc-300 text-slate-500">
                           {booking.lead_phone || booking.lead_email || "-"}
                         </p>
                       </div>
@@ -206,11 +213,11 @@ const Bookings = () => {
 
                     <td className="px-5 py-4">
                       <div>
-                        <p className="text-sm font-medium text-slate-900">
+                        <p className="text-sm font-medium dark:text-zinc-300 text-slate-900">
                           {booking.project_name || "-"}
                         </p>
 
-                        <p className="mt-1 text-xs text-slate-500">
+                        <p className="mt-1 text-xs dark:text-zinc-300 text-slate-500">
                           {booking.building_name || "-"}
                         </p>
                       </div>
@@ -218,40 +225,40 @@ const Bookings = () => {
 
                     <td className="px-5 py-4">
                       <div>
-                        <p className="text-sm font-medium text-slate-900">
+                        <p className="text-sm font-medium dark:text-zinc-300 text-slate-900">
                           {booking.unit_number || "-"}
                         </p>
 
-                        <p className="mt-1 text-xs text-slate-500">
+                        <p className="mt-1 text-xs  dark:text-zinc-300 text-slate-500">
                           {booking.unit_type || "-"}
                         </p>
                       </div>
                     </td>
 
-                    <td className="px-5 py-4 text-sm font-semibold text-slate-900">
+                    <td className="px-5 py-4 text-sm font-semibold dark:text-zinc-300 text-slate-900">
                       {formatPrice(booking.amount)}
                     </td>
 
                     <td className="px-5 py-4">
                       <div>
-                        <p className="text-sm font-medium text-slate-900">
+                        <p className="text-sm font-medium dark:text-zinc-300 text-slate-900">
                           {booking.booked_by_name || "-"}
                         </p>
 
-                        <p className="mt-1 text-xs text-slate-500">
+                        <p className="mt-1 text-xs dark:text-zinc-300 text-slate-500">
                           {booking.booked_by_email || "-"}
                         </p>
                       </div>
                     </td>
 
-                    <td className="px-5 py-4 text-sm text-slate-600">
+                    <td className="px-5 py-4 text-sm dark:text-zinc-300 text-slate-600">
                       {formatDate(booking.booked_at)}
                     </td>
 
                     <td className="px-5 py-4 text-right">
                       <Link
                         to={`/bookings/${booking.id}`}
-                        className="text-sm font-medium text-slate-700 hover:text-slate-900"
+                        className="text-sm font-medium text-slate-700 dark:text-zinc-300 dark:hover:text-slate-50 hover:text-slate-900"
                       >
                         View →
                       </Link>

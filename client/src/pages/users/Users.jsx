@@ -122,15 +122,19 @@ const Users = () => {
     <div className="space-y-6 p-4">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Users</h1>
+          <h1 className="text-2xl font-bold text-slate-900 dark:text-zinc-300">
+            Users
+          </h1>
 
-          <p className="mt-1 text-sm text-slate-500">Manage sales employees</p>
+          <p className="mt-1 text-sm text-slate-500 dark:text-zinc-300">
+            Manage sales employees
+          </p>
         </div>
 
         <button
           type="button"
           onClick={openCreateModal}
-          className="rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-slate-800"
+          className="rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-medium  text-white transition hover:bg-slate-800"
         >
           + Add Sales User
         </button>
@@ -142,18 +146,18 @@ const Users = () => {
         </div>
       )}
 
-      <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+      <div className="overflow-hidden rounded-xl border dark:border-zinc-700 dark:bg-zinc-800 border-slate-200 bg-white shadow-sm">
         {loading ? (
           <div className="flex min-h-[250px] items-center justify-center">
-            <div className="h-8 w-8 animate-spin rounded-full border-4 border-slate-200 border-t-slate-700" />
+            <div className="h-8 w-8 animate-spin rounded-full border-4 dark:border-zinc-700  border-slate-200 border-t-slate-700" />
           </div>
         ) : users.length === 0 ? (
           <div className="flex min-h-[250px] flex-col items-center justify-center px-6 text-center">
-            <h3 className="text-lg font-semibold text-slate-800">
+            <h3 className="text-lg font-semibold  text-slate-800 dark:text-zinc-300">
               No users found
             </h3>
 
-            <p className="mt-1 text-sm text-slate-500">
+            <p className="mt-1 text-sm text-slate-500 dark:text-zinc-300">
               Create your first sales employee.
             </p>
           </div>
@@ -161,34 +165,39 @@ const Users = () => {
           <>
             <div className="overflow-x-auto">
               <table className="min-w-full text-sm">
-                <thead className="border-b border-slate-200 bg-slate-50">
+                <thead className="border-b dark:bg-zinc-900 dark:text-zinc-400 border-slate-200 bg-slate-50">
                   <tr>
-                    <th className="px-6 py-4 text-left font-semibold text-slate-600">
+                    <th className="px-6 py-4 text-left font-semibold text-slate-600 dark:text-zinc-300">
                       Name
                     </th>
 
-                    <th className="px-6 py-4 text-left font-semibold text-slate-600">
+                    <th className="px-6 py-4 text-left font-semibold text-slate-600 dark:text-zinc-300">
                       Email
                     </th>
 
-                    <th className="px-6 py-4 text-left font-semibold text-slate-600">
+                    <th className="px-6 py-4 text-left font-semibold text-slate-600 dark:text-zinc-300">
                       Role
                     </th>
 
-                    <th className="px-6 py-4 text-left font-semibold text-slate-600">
+                    <th className="px-6 py-4 text-left font-semibold text-slate-600 dark:text-zinc-300">
                       Created
                     </th>
                   </tr>
                 </thead>
 
-                <tbody className="divide-y divide-slate-100">
+                <tbody className="divide-y dark:divide-slate-600 divide-slate-100">
                   {users.map((user) => (
-                    <tr key={user.id} className="hover:bg-slate-50">
-                      <td className="px-6 py-4 font-medium text-slate-900">
+                    <tr
+                      key={user.id}
+                      className="dark:hover:bg-zinc-800 hover:bg-slate-50"
+                    >
+                      <td className="px-6 py-4 font-medium dark:text-zinc-300 text-slate-900">
                         {user.name}
                       </td>
 
-                      <td className="px-6 py-4 text-slate-600">{user.email}</td>
+                      <td className="px-6 py-4 dark:text-zinc-300 text-slate-600">
+                        {user.email}
+                      </td>
 
                       <td className="px-6 py-4">
                         <span
@@ -202,7 +211,7 @@ const Users = () => {
                         </span>
                       </td>
 
-                      <td className="px-6 py-4 text-slate-500">
+                      <td className="px-6 py-4 text-slate-500 dark:text-zinc-300">
                         {user.created_at
                           ? new Date(user.created_at).toLocaleDateString()
                           : "-"}
@@ -215,7 +224,7 @@ const Users = () => {
 
             {pagination.totalPages > 1 && (
               <div className="flex items-center justify-between border-t border-slate-200 px-6 py-4">
-                <p className="text-sm text-slate-500">
+                <p className="text-sm text-slate-500 dark:text-zinc-300">
                   Page {pagination.page} of {pagination.totalPages}
                 </p>
 
@@ -263,7 +272,7 @@ const Users = () => {
           <div>
             <label
               htmlFor="name"
-              className="mb-1.5 block text-sm font-medium text-slate-700"
+              className="mb-1.5 block text-sm font-medium text-slate-700 dark:text-zinc-300"
             >
               Name
             </label>
@@ -276,14 +285,14 @@ const Users = () => {
               onChange={handleChange}
               placeholder="Enter employee name"
               required
-              className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-slate-500 focus:ring-2 focus:ring-slate-200"
+              className="w-full rounded-lg border dark:bg-zinc-900 dark:text-zinc-400 border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 dark:text-zinc-300 outline-none transition placeholder:text-slate-400 focus:border-slate-500 focus:ring-2 focus:ring-slate-200"
             />
           </div>
 
           <div>
             <label
               htmlFor="email"
-              className="mb-1.5 block text-sm font-medium text-slate-700"
+              className="mb-1.5 block text-sm font-medium text-slate-700 dark:text-zinc-300"
             >
               Email
             </label>
@@ -296,14 +305,14 @@ const Users = () => {
               onChange={handleChange}
               placeholder="Enter employee email"
               required
-              className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-slate-500 focus:ring-2 focus:ring-slate-200"
+              className="w-full rounded-lg border dark:bg-zinc-900 dark:text-zinc-400 border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 dark:text-zinc-300 outline-none transition placeholder:text-slate-400 focus:border-slate-500 focus:ring-2 focus:ring-slate-200"
             />
           </div>
 
           <div>
             <label
               htmlFor="password"
-              className="mb-1.5 block text-sm font-medium text-slate-700"
+              className="mb-1.5 block text-sm font-medium text-slate-700 dark:text-zinc-300"
             >
               Password
             </label>
@@ -317,11 +326,11 @@ const Users = () => {
               placeholder="Enter password"
               minLength={8}
               required
-              className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-slate-500 focus:ring-2 focus:ring-slate-200"
+              className="w-full rounded-lg border dark:bg-zinc-900 dark:text-zinc-400 border-slate-300 bg-white px-3 py-2.5 text-sm text-slate-900 dark:text-zinc-300 outline-none transition placeholder:text-slate-400 focus:border-slate-500 focus:ring-2 focus:ring-slate-200"
             />
           </div>
 
-          <div className="rounded-lg bg-slate-50 px-4 py-3 text-sm text-slate-600">
+          <div className="rounded-lg bg-slate-50 px-4 py-3 text-sm  dark:text-zinc-400 text-slate-600">
             New users created here will automatically have the{" "}
             <strong>SALES</strong> role.
           </div>
@@ -331,7 +340,7 @@ const Users = () => {
               type="button"
               onClick={closeCreateModal}
               disabled={submitting}
-              className="rounded-lg border border-slate-300 px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
+              className="rounded-lg border border-slate-300 px-4 py-2.5 text-sm font-medium text-slate-700 dark:text-zinc-300 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
             >
               Cancel
             </button>

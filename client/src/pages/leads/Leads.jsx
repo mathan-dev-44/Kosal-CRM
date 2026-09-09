@@ -142,14 +142,14 @@ const Leads = () => {
   };
 
   return (
-    <div className="p-6 dark:bg-zinc-950">
+    <div className="p-4 sm:p-6">
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900  dark:text-zinc-100">
+          <h1 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 sm:text-2xl">
             Leads
           </h1>
 
-          <p className="mt-1 text-sm text-slate-500  dark:text-zinc-300">
+          <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
             Manage and track your real estate leads.
           </p>
         </div>
@@ -157,14 +157,15 @@ const Leads = () => {
         <button
           type="button"
           onClick={handleAddLead}
-          className="rounded-lg dark:bg-zinc-900 border-slate-200 bg-zinc-700 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-slate-800"
+          className="self-start rounded-lg bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 sm:self-auto"
         >
           + Add Lead
         </button>
       </div>
 
-      <div className="mb-5 rounded-xl border dark:bg-zinc-950 dark:border-zinc-800 border-slate-200 bg-white p-4">
-        <div className="flex flex-col gap-3 md:flex-row  dark:bg-zinc-950 dark:border-zinc-800 ">
+      {/* Filters */}
+      <div className="mb-5 rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
+        <div className="flex flex-col gap-3 sm:flex-row">
           <input
             type="text"
             value={search}
@@ -175,7 +176,7 @@ const Leads = () => {
               }
             }}
             placeholder="Search by name, phone or email..."
-            className="flex-1 rounded-lg border  dark:bg-zinc-950 dark:border-zinc-800 border-slate-300 px-3 py-2.5 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-200"
+            className="flex-1 rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 outline-none transition placeholder:text-zinc-400 focus:border-zinc-500 focus:ring-2 focus:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100 dark:placeholder-zinc-500 dark:focus:border-zinc-500 dark:focus:ring-zinc-700"
           />
 
           <select
@@ -184,7 +185,7 @@ const Leads = () => {
               setStage(event.target.value);
               setPage(1);
             }}
-            className="rounded-lg border  dark:bg-zinc-950 dark:border-zinc-800 border-slate-300 bg-white px-3 py-2.5 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-200"
+            className="rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 outline-none transition focus:border-zinc-500 focus:ring-2 focus:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100 dark:focus:border-zinc-500 dark:focus:ring-zinc-700"
           >
             <option value="">All Stages</option>
 
@@ -200,7 +201,7 @@ const Leads = () => {
           <button
             type="button"
             onClick={handleSearch}
-            className="rounded-lg border  dark:bg-zinc-950 dark:border-zinc-800 dark:text-slate-100 border-slate-300 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50 dark:hover:bg-zinc-800 "
+            className="rounded-lg border border-zinc-300 bg-white px-4 py-2.5 text-sm font-medium text-zinc-700 transition hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700"
           >
             Search
           </button>
@@ -208,7 +209,7 @@ const Leads = () => {
       </div>
 
       {error && (
-        <div className="mb-5 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+        <div className="mb-5 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-800 dark:bg-red-950 dark:text-red-400">
           {error}
         </div>
       )}
@@ -221,8 +222,8 @@ const Leads = () => {
       />
 
       {!loading && leads.length > 0 && (
-        <div className="mt-5 flex items-center justify-between rounded-xl border border-slate-200 bg-white px-4 py-3">
-          <p className="text-sm text-slate-500">
+        <div className="mt-5 flex items-center justify-between rounded-xl border border-zinc-200 bg-white px-4 py-3 dark:border-zinc-800 dark:bg-zinc-900">
+          <p className="text-sm text-zinc-500 dark:text-zinc-400">
             Page {pagination.page} of {pagination.totalPages}
           </p>
 
@@ -231,7 +232,7 @@ const Leads = () => {
               type="button"
               disabled={page <= 1}
               onClick={() => setPage((previous) => previous - 1)}
-              className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40"
+              className="rounded-lg border border-zinc-300 px-3 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
             >
               Previous
             </button>
@@ -240,7 +241,7 @@ const Leads = () => {
               type="button"
               disabled={page >= pagination.totalPages}
               onClick={() => setPage((previous) => previous + 1)}
-              className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40"
+              className="rounded-lg border border-zinc-300 px-3 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-50 disabled:cursor-not-allowed disabled:opacity-40 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
             >
               Next
             </button>
@@ -254,7 +255,7 @@ const Leads = () => {
         title={selectedLead ? "Edit Lead" : "Add New Lead"}
       >
         {formError && (
-          <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+          <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-800 dark:bg-red-950 dark:text-red-400">
             {formError}
           </div>
         )}

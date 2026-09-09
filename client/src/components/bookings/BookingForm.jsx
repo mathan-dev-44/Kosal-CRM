@@ -26,9 +26,6 @@ const BookingForm = ({ saving, onSubmit, onCancel }) => {
 
   const [error, setError] = useState("");
 
-  /*
-   * Load leads and projects when form opens
-   */
   useEffect(() => {
     const loadInitialData = async () => {
       try {
@@ -58,9 +55,6 @@ const BookingForm = ({ saving, onSubmit, onCancel }) => {
     loadInitialData();
   }, []);
 
-  /*
-   * Load buildings when project changes
-   */
   useEffect(() => {
     if (!projectId) {
       setBuildings([]);
@@ -93,9 +87,6 @@ const BookingForm = ({ saving, onSubmit, onCancel }) => {
     loadBuildings();
   }, [projectId]);
 
-  /*
-   * Load available units when building changes
-   */
   useEffect(() => {
     if (!buildingId) {
       setUnits([]);
@@ -127,9 +118,6 @@ const BookingForm = ({ saving, onSubmit, onCancel }) => {
     loadUnits();
   }, [buildingId]);
 
-  /*
-   * Submit booking
-   */
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -178,7 +166,7 @@ const BookingForm = ({ saving, onSubmit, onCancel }) => {
       <div>
         <label
           htmlFor="lead"
-          className="mb-1.5 block text-sm font-medium text-slate-700"
+          className="mb-1.5 block text-sm font-medium dark:text-zinc-300 text-slate-700"
         >
           Lead
         </label>
@@ -188,7 +176,7 @@ const BookingForm = ({ saving, onSubmit, onCancel }) => {
           value={leadId}
           onChange={(event) => setLeadId(event.target.value)}
           disabled={loadingLeads || saving}
-          className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 disabled:bg-slate-100"
+          className="w-full rounded-lg border border-slate-300 dark:bg-zinc-900 dark:text-zinc-400 bg-white px-3 py-2.5 text-sm outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 dark:disabled:bg-zinc-800 disabled:bg-slate-100"
         >
           <option value="">
             {loadingLeads ? "Loading leads..." : "Select a lead"}
@@ -206,7 +194,7 @@ const BookingForm = ({ saving, onSubmit, onCancel }) => {
       <div>
         <label
           htmlFor="project"
-          className="mb-1.5 block text-sm font-medium text-slate-700"
+          className="mb-1.5 block text-sm font-medium dark:text-zinc-300 text-slate-700"
         >
           Project
         </label>
@@ -216,7 +204,7 @@ const BookingForm = ({ saving, onSubmit, onCancel }) => {
           value={projectId}
           onChange={(event) => setProjectId(event.target.value)}
           disabled={loadingProjects || saving}
-          className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 disabled:bg-slate-100"
+          className="w-full rounded-lg border dark:bg-zinc-900 dark:text-zinc-400 border-slate-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 dark:disabled:bg-zinc-800 disabled:bg-slate-100"
         >
           <option value="">
             {loadingProjects ? "Loading projects..." : "Select a project"}
@@ -234,7 +222,7 @@ const BookingForm = ({ saving, onSubmit, onCancel }) => {
       <div>
         <label
           htmlFor="building"
-          className="mb-1.5 block text-sm font-medium text-slate-700"
+          className="mb-1.5 block text-sm font-medium dark:text-zinc-300 text-slate-700"
         >
           Building
         </label>
@@ -244,7 +232,7 @@ const BookingForm = ({ saving, onSubmit, onCancel }) => {
           value={buildingId}
           onChange={(event) => setBuildingId(event.target.value)}
           disabled={!projectId || loadingBuildings || saving}
-          className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 disabled:bg-slate-100"
+          className="w-full rounded-lg border dark:bg-zinc-900 dark:text-zinc-400 border-slate-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 dark:disabled:bg-zinc-800 disabled:bg-slate-100"
         >
           <option value="">
             {!projectId
@@ -265,7 +253,7 @@ const BookingForm = ({ saving, onSubmit, onCancel }) => {
       <div>
         <label
           htmlFor="unit"
-          className="mb-1.5 block text-sm font-medium text-slate-700"
+          className="mb-1.5 block text-sm font-medium dark:text-zinc-300 text-slate-700"
         >
           Available Unit
         </label>
@@ -275,7 +263,7 @@ const BookingForm = ({ saving, onSubmit, onCancel }) => {
           value={unitId}
           onChange={(event) => setUnitId(event.target.value)}
           disabled={!buildingId || loadingUnits || saving}
-          className="w-full rounded-lg border border-slate-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 disabled:bg-slate-100"
+          className="w-full rounded-lg border dark:bg-zinc-900 dark:text-zinc-400 border-slate-300 bg-white px-3 py-2.5 text-sm outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 dark:disabled:bg-zinc-800 disabled:bg-slate-100"
         >
           <option value="">
             {!buildingId
@@ -294,7 +282,7 @@ const BookingForm = ({ saving, onSubmit, onCancel }) => {
         </select>
 
         {buildingId && !loadingUnits && units.length === 0 && (
-          <p className="mt-1.5 text-xs text-slate-500">
+          <p className="mt-1.5 text-xs dark:text-zinc-300 text-slate-500">
             No available units in this building.
           </p>
         )}
@@ -303,7 +291,7 @@ const BookingForm = ({ saving, onSubmit, onCancel }) => {
       <div>
         <label
           htmlFor="amount"
-          className="mb-1.5 block text-sm font-medium text-slate-700"
+          className="mb-1.5 block text-sm font-medium dark:text-zinc-300 text-slate-700"
         >
           Booking Amount
         </label>
@@ -317,7 +305,7 @@ const BookingForm = ({ saving, onSubmit, onCancel }) => {
           onChange={(event) => setAmount(event.target.value)}
           disabled={saving}
           placeholder="Enter booking amount"
-          className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 disabled:bg-slate-100"
+          className="w-full rounded-lg border dark:bg-zinc-900 dark:text-zinc-400 border-slate-300 px-3 py-2.5 text-sm outline-none focus:border-slate-500 focus:ring-1 focus:ring-slate-500 disabled:bg-slate-100"
         />
       </div>
 

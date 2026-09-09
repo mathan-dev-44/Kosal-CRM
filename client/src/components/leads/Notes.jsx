@@ -53,18 +53,20 @@ const Notes = ({ leadId }) => {
   };
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-white">
-      <div className="border-b border-slate-200 px-6 py-4">
-        <h2 className="font-semibold text-slate-900">Notes</h2>
+    <div className="rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
+      <div className="border-b border-zinc-200 px-6 py-4 dark:border-zinc-800">
+        <h2 className="font-semibold text-zinc-900 dark:text-zinc-100">
+          Notes
+        </h2>
 
-        <p className="mt-1 text-xs text-slate-500">
+        <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
           Keep track of important information about this lead.
         </p>
       </div>
 
       <div className="p-6">
         {error && (
-          <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+          <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-800 dark:bg-red-950 dark:text-red-400">
             {error}
           </div>
         )}
@@ -75,14 +77,14 @@ const Notes = ({ leadId }) => {
             onChange={(event) => setNote(event.target.value)}
             placeholder="Write a note about this lead..."
             rows={3}
-            className="w-full resize-none rounded-lg border border-slate-300 px-3 py-2.5 text-sm outline-none transition focus:border-slate-500 focus:ring-2 focus:ring-slate-200"
+            className="w-full resize-none rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 outline-none transition placeholder:text-zinc-400 focus:border-zinc-500 focus:ring-2 focus:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100 dark:placeholder-zinc-500 dark:focus:border-zinc-500 dark:focus:ring-zinc-700"
           />
 
           <div className="mt-3 flex justify-end">
             <button
               type="submit"
               disabled={saving || !note.trim()}
-              className="rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50"
+              className="rounded-lg bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
             >
               {saving ? "Adding..." : "Add Note"}
             </button>
@@ -90,14 +92,16 @@ const Notes = ({ leadId }) => {
         </form>
 
         {loading ? (
-          <div className="py-8 text-center text-sm text-slate-500">
+          <div className="py-8 text-center text-sm text-zinc-500 dark:text-zinc-400">
             Loading notes...
           </div>
         ) : notes.length === 0 ? (
-          <div className="rounded-lg border border-dashed border-slate-300 bg-slate-50 p-8 text-center">
-            <p className="text-sm font-medium text-slate-600">No notes yet</p>
+          <div className="rounded-lg border border-dashed border-zinc-300 bg-zinc-50 p-8 text-center dark:border-zinc-700 dark:bg-zinc-800">
+            <p className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
+              No notes yet
+            </p>
 
-            <p className="mt-1 text-xs text-slate-400">
+            <p className="mt-1 text-xs text-zinc-400 dark:text-zinc-500">
               Add the first note for this lead.
             </p>
           </div>
@@ -106,15 +110,15 @@ const Notes = ({ leadId }) => {
             {notes.map((item) => (
               <div
                 key={item.id}
-                className="rounded-lg border border-slate-200 p-4"
+                className="rounded-lg border border-zinc-200 p-4 dark:border-zinc-700"
               >
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="text-sm font-medium text-slate-900">
+                    <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100">
                       {item.user_name || "CRM User"}
                     </p>
 
-                    <p className="mt-0.5 text-xs text-slate-400">
+                    <p className="mt-0.5 text-xs text-zinc-400 dark:text-zinc-500">
                       {item.created_at
                         ? new Date(item.created_at).toLocaleString()
                         : ""}
@@ -122,7 +126,7 @@ const Notes = ({ leadId }) => {
                   </div>
                 </div>
 
-                <p className="mt-3 whitespace-pre-wrap text-sm leading-6 text-slate-600">
+                <p className="mt-3 whitespace-pre-wrap text-sm leading-6 text-zinc-600 dark:text-zinc-400">
                   {item.content}
                 </p>
               </div>

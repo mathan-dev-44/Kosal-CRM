@@ -1,6 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import { AuthProvider } from "./context/AuthContext.jsx";
+import { ThemeProvider } from "./context/ThemeContext.jsx";
 
 import Login from "./pages/auth/Login.jsx";
 import Dashboard from "./pages/dashboard/Dashboard.jsx";
@@ -22,45 +23,47 @@ import Users from "./pages/users/Users.jsx";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <Routes>
-          <Route path="/login" element={<Login />} />
+    <ThemeProvider>
+      <BrowserRouter>
+        <AuthProvider>
+          <Routes>
+            <Route path="/login" element={<Login />} />
 
-          <Route element={<ProtectedRoute />}>
-            <Route element={<DashboardLayout />}>
-              <Route path="/dashboard" element={<Dashboard />} />
+            <Route element={<ProtectedRoute />}>
+              <Route element={<DashboardLayout />}>
+                <Route path="/dashboard" element={<Dashboard />} />
 
-              <Route path="/leads" element={<Leads />} />
+                <Route path="/leads" element={<Leads />} />
 
-              <Route path="/leads/:id" element={<LeadDetails />} />
+                <Route path="/leads/:id" element={<LeadDetails />} />
 
-              <Route path="/properties/projects" element={<Projects />} />
+                <Route path="/properties/projects" element={<Projects />} />
 
-              <Route
-                path="/properties/projects/:id"
-                element={<ProjectDetails />}
-              />
+                <Route
+                  path="/properties/projects/:id"
+                  element={<ProjectDetails />}
+                />
 
-              <Route
-                path="/properties/buildings/:buildingId/units"
-                element={<Units />}
-              />
+                <Route
+                  path="/properties/buildings/:buildingId/units"
+                  element={<Units />}
+                />
 
-              <Route path="/bookings" element={<Bookings />} />
+                <Route path="/bookings" element={<Bookings />} />
 
-              <Route path="/bookings/:id" element={<BookingDetails />} />
+                <Route path="/bookings/:id" element={<BookingDetails />} />
 
-              <Route element={<RoleRoute allowedRoles={["ADMIN"]} />}>
-                <Route path="/users" element={<Users />} />
+                <Route element={<RoleRoute allowedRoles={["ADMIN"]} />}>
+                  <Route path="/users" element={<Users />} />
+                </Route>
               </Route>
             </Route>
-          </Route>
 
-          <Route path="*" element={<Navigate to="/dashboard" replace />} />
-        </Routes>
-      </AuthProvider>
-    </BrowserRouter>
+            <Route path="*" element={<Navigate to="/dashboard" replace />} />
+          </Routes>
+        </AuthProvider>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 };
 

@@ -20,10 +20,14 @@ const emptyForm = {
   imageUrl: "",
 };
 
+const inputCls =
+  "w-full rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-sm text-zinc-900 outline-none transition placeholder:text-zinc-400 focus:border-zinc-500 focus:ring-2 focus:ring-zinc-200 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100 dark:placeholder-zinc-500 dark:focus:border-zinc-500 dark:focus:ring-zinc-700";
+
+const labelCls =
+  "mb-1.5 block text-sm font-medium text-zinc-700 dark:text-zinc-300";
+
 const Projects = () => {
-  console.log("pppprender");
   const { user } = useAuth();
-  console.log(user, "user");
 
   const isAdmin = user?.role === "ADMIN";
 
@@ -182,10 +186,6 @@ const Projects = () => {
 
       await deleteProjectApi(project.id);
 
-      /*
-       * If the deleted project was the last item
-       * on the current page, move back one page.
-       */
       if (projects.length === 1 && page > 1) {
         setPage((previous) => previous - 1);
       } else {
@@ -197,12 +197,14 @@ const Projects = () => {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-4 sm:p-6">
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Projects</h1>
+          <h1 className="text-xl font-bold text-zinc-900 dark:text-zinc-100 sm:text-2xl">
+            Projects
+          </h1>
 
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
             Manage your real estate projects.
           </p>
         </div>
@@ -210,7 +212,7 @@ const Projects = () => {
           <button
             type="button"
             onClick={openAddModal}
-            className="rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-slate-800"
+            className="self-start rounded-lg bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white transition hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 sm:self-auto"
           >
             + Add Project
           </button>
@@ -218,32 +220,34 @@ const Projects = () => {
       </div>
 
       {error && (
-        <div className="mb-6 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+        <div className="mb-6 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-800 dark:bg-red-950 dark:text-red-400">
           {error}
         </div>
       )}
 
       {loading ? (
-        <div className="rounded-xl border border-slate-200 bg-white p-10 text-center text-sm text-slate-500">
+        <div className="rounded-xl border border-zinc-200 bg-white p-10 text-center text-sm text-zinc-500 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400">
           Loading projects...
         </div>
       ) : projects.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-slate-300 bg-white p-12 text-center">
-          <h2 className="text-sm font-semibold text-slate-700">
+        <div className="rounded-xl border border-dashed border-zinc-300 bg-white p-12 text-center dark:border-zinc-700 dark:bg-zinc-900">
+          <h2 className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">
             No projects found
           </h2>
 
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-zinc-400 dark:text-zinc-500">
             Create your first real estate project.
           </p>
 
-          <button
-            type="button"
-            onClick={openAddModal}
-            className="mt-4 rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-slate-800"
-          >
-            Add Project
-          </button>
+          {isAdmin && (
+            <button
+              type="button"
+              onClick={openAddModal}
+              className="mt-4 rounded-lg bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
+            >
+              Add Project
+            </button>
+          )}
         </div>
       ) : (
         <>
@@ -251,7 +255,7 @@ const Projects = () => {
             {projects.map((project) => (
               <div
                 key={project.id}
-                className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm"
+                className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900"
               >
                 {project.image_url ? (
                   <img
@@ -260,25 +264,27 @@ const Projects = () => {
                     className="h-44 w-full object-cover"
                   />
                 ) : (
-                  <div className="flex h-44 items-center justify-center bg-slate-100">
-                    <span className="text-sm text-slate-400">No image</span>
+                  <div className="flex h-44 items-center justify-center bg-zinc-100 dark:bg-zinc-800">
+                    <span className="text-sm text-zinc-400 dark:text-zinc-500">
+                      No image
+                    </span>
                   </div>
                 )}
 
                 <div className="p-5">
                   <Link
                     to={`/properties/projects/${project.id}`}
-                    className="text-lg font-semibold text-slate-900 hover:text-slate-600"
+                    className="text-lg font-semibold text-zinc-900 hover:text-zinc-600 dark:text-zinc-100 dark:hover:text-zinc-300"
                   >
                     {project.name}
                   </Link>
 
-                  <p className="mt-1 text-sm text-slate-500">
+                  <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
                     {project.location}
                   </p>
 
                   {project.description && (
-                    <p className="mt-3 line-clamp-3 text-sm leading-6 text-slate-600">
+                    <p className="mt-3 line-clamp-3 text-sm leading-6 text-zinc-600 dark:text-zinc-400">
                       {project.description}
                     </p>
                   )}
@@ -288,7 +294,7 @@ const Projects = () => {
                       <button
                         type="button"
                         onClick={() => openEditModal(project)}
-                        className="flex-1 rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+                        className="flex-1 rounded-lg border border-zinc-300 px-3 py-2 text-sm font-medium text-zinc-700 transition hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
                       >
                         Edit
                       </button>
@@ -296,7 +302,7 @@ const Projects = () => {
                       <button
                         type="button"
                         onClick={() => handleDelete(project)}
-                        className="rounded-lg border border-red-200 px-3 py-2 text-sm font-medium text-red-600 transition hover:bg-red-50"
+                        className="rounded-lg border border-red-200 px-3 py-2 text-sm font-medium text-red-600 transition hover:bg-red-50 dark:border-red-800 dark:text-red-400 dark:hover:bg-red-950"
                       >
                         Delete
                       </button>
@@ -308,8 +314,8 @@ const Projects = () => {
           </div>
 
           {pagination.totalPages > 1 && (
-            <div className="mt-6 flex items-center justify-between rounded-xl border border-slate-200 bg-white px-4 py-3">
-              <p className="text-sm text-slate-500">
+            <div className="mt-6 flex items-center justify-between rounded-xl border border-zinc-200 bg-white px-4 py-3 dark:border-zinc-800 dark:bg-zinc-900">
+              <p className="text-sm text-zinc-500 dark:text-zinc-400">
                 Page {pagination.page} of {pagination.totalPages}
               </p>
 
@@ -320,7 +326,7 @@ const Projects = () => {
                   onClick={() =>
                     setPage((previous) => Math.max(previous - 1, 1))
                   }
-                  className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="rounded-lg border border-zinc-300 px-3 py-2 text-sm font-medium text-zinc-700 hover:bg-zinc-50 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
                 >
                   Previous
                 </button>
@@ -333,7 +339,7 @@ const Projects = () => {
                       Math.min(previous + 1, pagination.totalPages),
                     )
                   }
-                  className="rounded-lg border border-slate-300 px-3 py-2 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="rounded-lg border border-zinc-300 px-3 py-2 text-sm font-medium text-zinc-700 hover:bg-zinc-50 disabled:cursor-not-allowed disabled:opacity-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
                 >
                   Next
                 </button>
@@ -350,15 +356,13 @@ const Projects = () => {
       >
         <form onSubmit={handleSubmit}>
           {formError && (
-            <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+            <div className="mb-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-800 dark:bg-red-950 dark:text-red-400">
               {formError}
             </div>
           )}
 
           <div>
-            <label className="mb-1.5 block text-sm font-medium text-slate-700">
-              Project Name
-            </label>
+            <label className={labelCls}>Project Name</label>
 
             <input
               type="text"
@@ -366,14 +370,12 @@ const Projects = () => {
               value={form.name}
               onChange={handleChange}
               placeholder="e.g. Green Valley Residency"
-              className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200"
+              className={inputCls}
             />
           </div>
 
           <div className="mt-4">
-            <label className="mb-1.5 block text-sm font-medium text-slate-700">
-              Location
-            </label>
+            <label className={labelCls}>Location</label>
 
             <input
               type="text"
@@ -381,14 +383,12 @@ const Projects = () => {
               value={form.location}
               onChange={handleChange}
               placeholder="e.g. Tirunelveli"
-              className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200"
+              className={inputCls}
             />
           </div>
 
           <div className="mt-4">
-            <label className="mb-1.5 block text-sm font-medium text-slate-700">
-              Description
-            </label>
+            <label className={labelCls}>Description</label>
 
             <textarea
               name="description"
@@ -397,18 +397,16 @@ const Projects = () => {
               rows={4}
               maxLength={2000}
               placeholder="Describe the project..."
-              className="w-full resize-none rounded-lg border border-slate-300 px-3 py-2.5 text-sm outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200"
+              className={`${inputCls} resize-none`}
             />
 
-            <p className="mt-1 text-right text-xs text-slate-400">
+            <p className="mt-1 text-right text-xs text-zinc-400 dark:text-zinc-500">
               {form.description.length}/2000
             </p>
           </div>
 
           <div className="mt-4">
-            <label className="mb-1.5 block text-sm font-medium text-slate-700">
-              Image URL
-            </label>
+            <label className={labelCls}>Image URL</label>
 
             <input
               type="url"
@@ -416,7 +414,7 @@ const Projects = () => {
               value={form.imageUrl}
               onChange={handleChange}
               placeholder="https://example.com/project.jpg"
-              className="w-full rounded-lg border border-slate-300 px-3 py-2.5 text-sm outline-none focus:border-slate-500 focus:ring-2 focus:ring-slate-200"
+              className={inputCls}
             />
           </div>
 
@@ -425,7 +423,7 @@ const Projects = () => {
               type="button"
               onClick={closeModal}
               disabled={saving}
-              className="rounded-lg border border-slate-300 px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50"
+              className="rounded-lg border border-zinc-300 px-4 py-2.5 text-sm font-medium text-zinc-700 hover:bg-zinc-50 disabled:opacity-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
             >
               Cancel
             </button>
@@ -433,7 +431,7 @@ const Projects = () => {
             <button
               type="submit"
               disabled={saving}
-              className="rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-slate-800 disabled:cursor-not-allowed disabled:opacity-50"
+              className="rounded-lg bg-zinc-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
             >
               {saving
                 ? "Saving..."

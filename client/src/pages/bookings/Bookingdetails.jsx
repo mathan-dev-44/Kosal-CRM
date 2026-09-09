@@ -84,56 +84,58 @@ const BookingDetails = () => {
       <div className="mb-6">
         <Link
           to="/bookings"
-          className="text-sm font-medium text-slate-500 hover:text-slate-900"
+          className="text-sm font-medium dark:text-zinc-300 text-slate-500 dark:hover:text-slate-50 hover:text-slate-900"
         >
           ← Back to Bookings
         </Link>
 
         <div className="mt-4">
-          <h1 className="text-2xl font-bold text-slate-900">Booking Details</h1>
+          <h1 className="text-2xl font-bold dark:text-zinc-300 text-slate-900">
+            Booking Details
+          </h1>
 
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm dark:text-zinc-300 text-slate-500">
             Booking ID: {booking.id}
           </p>
         </div>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
-        <div className="rounded-xl border border-slate-200 bg-white p-5">
-          <h2 className="mb-4 text-lg font-semibold text-slate-900">
+        <div className="rounded-xl border dark:bg-zinc-900 dark:text-zinc-300 dark:border-zinc-700 border-slate-200 bg-white p-5">
+          <h2 className="mb-4 text-lg font-semibold dark:text-zinc-300 text-slate-900">
             Lead Information
           </h2>
 
           <div className="space-y-4">
             <div>
-              <p className="text-xs font-medium uppercase text-slate-400">
+              <p className="text-xs font-medium uppercase  text-slate-400 dark:text-zinc-300">
                 Name
               </p>
-              <p className="mt-1 text-sm font-medium text-slate-900">
+              <p className="mt-1 text-sm font-medium text-slate-900 dark:text-slate-300">
                 {booking.lead_name}
               </p>
             </div>
 
             <div>
-              <p className="text-xs font-medium uppercase text-slate-400">
+              <p className="text-xs font-medium uppercase text-slate-400 dark:text-zinc-300">
                 Phone
               </p>
-              <p className="mt-1 text-sm text-slate-700">
+              <p className="mt-1 text-sm text-slate-700 dark:text-zinc-300">
                 {booking.lead_phone || "-"}
               </p>
             </div>
 
             <div>
-              <p className="text-xs font-medium uppercase text-slate-400">
+              <p className="text-xs font-medium uppercase text-slate-400 dark:text-zinc-300">
                 Email
               </p>
-              <p className="mt-1 text-sm text-slate-700">
+              <p className="mt-1 text-sm text-slate-700 dark:text-zinc-300">
                 {booking.lead_email || "-"}
               </p>
             </div>
 
             <div>
-              <p className="text-xs font-medium uppercase text-slate-400">
+              <p className="text-xs font-medium uppercase text-slate-400 dark:text-zinc-300">
                 Stage
               </p>
 
@@ -144,74 +146,76 @@ const BookingDetails = () => {
           </div>
         </div>
 
-        <div className="rounded-xl border border-slate-200 bg-white p-5">
-          <h2 className="mb-4 text-lg font-semibold text-slate-900">
+        <div className="rounded-xl border  dark:bg-zinc-900 dark:text-zinc-300 dark:border-zinc-700 border-slate-200 bg-white p-5">
+          <h2 className="mb-4 text-lg font-semibold  text-slate-900 dark:text-slate-300">
             Property Information
           </h2>
 
           <div className="space-y-4">
             <div>
-              <p className="text-xs font-medium uppercase text-slate-400">
+              <p className="text-xs font-medium uppercase text-slate-400 dark:text-zinc-300">
                 Project
               </p>
-              <p className="mt-1 text-sm font-medium text-slate-900">
+              <p className="mt-1 text-sm font-medium text-slate-900 dark:text-slate-300">
                 {booking.project_name}
               </p>
             </div>
 
             <div>
-              <p className="text-xs font-medium uppercase text-slate-400">
+              <p className="text-xs font-medium uppercase text-slate-400 dark:text-zinc-300">
                 Location
               </p>
-              <p className="mt-1 text-sm text-slate-700">
+              <p className="mt-1 text-sm text-slate-700 dark:text-zinc-300">
                 {booking.project_location}
               </p>
             </div>
 
             <div>
-              <p className="text-xs font-medium uppercase text-slate-400">
+              <p className="text-xs font-medium uppercase text-slate-400 dark:text-zinc-300">
                 Building
               </p>
-              <p className="mt-1 text-sm font-medium text-slate-900">
+              <p className="mt-1 text-sm font-medium text-slate-900 dark:text-slate-300">
                 {booking.building_name}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="rounded-xl border border-slate-200 bg-white p-5">
-          <h2 className="mb-4 text-lg font-semibold text-slate-900">
+        <div className="rounded-xl border dark:bg-zinc-900 dark:text-zinc-300 dark:border-zinc-700 border-slate-200 bg-white p-5">
+          <h2 className="mb-4 text-lg font-semibold text-slate-900 dark:text-slate-300">
             Unit Information
           </h2>
 
           <div className="grid grid-cols-2 gap-5">
             <div>
-              <p className="text-xs font-medium uppercase text-slate-400">
+              <p className="text-xs font-medium uppercase text-slate-400 dark:text-zinc-300">
                 Unit
               </p>
-              <p className="mt-1 text-sm font-semibold text-slate-900">
+              <p className="mt-1 text-sm font-semibold text-slate-900 dark:text-slate-300">
                 {booking.unit_number}
               </p>
             </div>
 
             <div>
-              <p className="text-xs font-medium uppercase text-slate-400">
+              <p className="text-xs font-medium uppercase text-slate-400 dark:text-zinc-300">
                 Type
               </p>
-              <p className="mt-1 text-sm text-slate-700">{booking.unit_type}</p>
+              <p className="mt-1 text-sm text-slate-700 dark:text-zinc-300">
+                {booking.unit_type}
+              </p>
             </div>
 
             <div>
-              <p className="text-xs font-medium uppercase text-slate-400">
+              <p className="text-xs font-medium uppercase text-slate-400 dark:text-zinc-300">
                 Unit Price
               </p>
-              <p className="mt-1 text-sm font-semibold text-slate-900">
+              <p className="mt-1 text-sm font-semibold text-slate-900 dark:text-slate-300">
                 {formatPrice(booking.unit_price)}
               </p>
             </div>
 
             <div>
-              <p className="text-xs font-medium uppercase text-slate-400">
+              <p className="text-xs font-medium uppercase text-slate-400 dark:text-zinc-300">
                 Status
               </p>
 
@@ -222,28 +226,28 @@ const BookingDetails = () => {
           </div>
         </div>
 
-        <div className="rounded-xl border border-slate-200 bg-white p-5">
-          <h2 className="mb-4 text-lg font-semibold text-slate-900">
+        <div className="rounded-xl border dark:bg-zinc-900 dark:text-zinc-300 dark:border-zinc-700 border-slate-200 bg-white p-5">
+          <h2 className="mb-4 text-lg font-semibold text-slate-900 dark:text-slate-300">
             Booking Information
           </h2>
 
           <div className="space-y-4">
             <div>
-              <p className="text-xs font-medium uppercase text-slate-400">
+              <p className="text-xs font-medium uppercase text-slate-400 dark:text-zinc-300">
                 Booking Amount
               </p>
 
-              <p className="mt-1 text-xl font-bold text-slate-900">
+              <p className="mt-1 text-xl font-bold text-slate-900 dark:text-slate-300">
                 {formatPrice(booking.amount)}
               </p>
             </div>
 
             <div>
-              <p className="text-xs font-medium uppercase text-slate-400">
+              <p className="text-xs font-medium uppercase text-slate-400 dark:text-zinc-300">
                 Booked By
               </p>
 
-              <p className="mt-1 text-sm font-medium text-slate-900">
+              <p className="mt-1 text-sm font-medium text-slate-900 dark:text-slate-300">
                 {booking.booked_by_name}
               </p>
 
@@ -253,11 +257,11 @@ const BookingDetails = () => {
             </div>
 
             <div>
-              <p className="text-xs font-medium uppercase text-slate-400">
+              <p className="text-xs font-medium uppercase text-slate-400 dark:text-zinc-300">
                 Booked At
               </p>
 
-              <p className="mt-1 text-sm text-slate-700">
+              <p className="mt-1 text-sm text-slate-700 dark:text-zinc-300">
                 {formatDate(booking.booked_at)}
               </p>
             </div>

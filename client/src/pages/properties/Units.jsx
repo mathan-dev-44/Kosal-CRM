@@ -98,16 +98,18 @@ const Units = () => {
       <div>
         <Link
           to="/properties/projects"
-          className="mt-4 inline-block text-sm font-medium text-slate-700 hover:text-slate-900"
+          className="mt-4 inline-block text-sm font-medium text-slate-700  dark:text-zinc-400 dark:hover:text-zinc-300 hover:text-slate-900"
         >
           ← Back to Projects
         </Link>
       </div>
       <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Units</h1>
+          <h1 className="text-2xl font-bold  dark:text-zinc-200 text-slate-900">
+            Units
+          </h1>
 
-          <p className="mt-1 text-sm text-slate-500">
+          <p className="mt-1 text-sm   dark:text-zinc-300 text-slate-500">
             Manage units in this building.
           </p>
         </div>
@@ -116,7 +118,7 @@ const Units = () => {
           <button
             type="button"
             onClick={openAddModal}
-            className="rounded-lg bg-slate-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-slate-800"
+            className="rounded-lg bg-slate-900 dark:bg-zinc-900 dark:text-zinc-400 px-4 py-2.5 text-sm font-medium text-white hover:bg-slate-800"
           >
             + Add Unit
           </button>
@@ -129,16 +131,19 @@ const Units = () => {
         </div>
       )}
 
-      <div className="mb-5 flex flex-col gap-3 rounded-xl border border-slate-200 bg-white p-4 sm:flex-row">
+      <div
+        className="mb-5 flex flex-col gap-3 dark:border-slate-600 dark:bg-zinc-900 dark:text-zinc-400
+       rounded-xl border border-slate-200 bg-white p-4 sm:flex-row"
+      >
         <div>
-          <label className="mb-1 block text-xs font-medium text-slate-500">
+          <label className="mb-1 block text-xs dark:text-zinc-300 font-medium text-slate-500">
             Status
           </label>
 
           <select
             value={status}
             onChange={(event) => setStatus(event.target.value)}
-            className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm"
+            className="rounded-lg border dark:bg-zinc-900 dark:text-zinc-400 border-slate-300 bg-white px-3 py-2 text-sm"
           >
             <option value="">All Statuses</option>
             <option value="AVAILABLE">Available</option>
@@ -148,14 +153,14 @@ const Units = () => {
         </div>
 
         <div>
-          <label className="mb-1 block text-xs font-medium text-slate-500">
+          <label className="mb-1 block text-xs font-medium dark:text-zinc-300 text-slate-500">
             Type
           </label>
 
           <select
             value={type}
             onChange={(event) => setType(event.target.value)}
-            className="rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm"
+            className="rounded-lg border dark:bg-zinc-900 dark:text-zinc-400 border-slate-300 bg-white px-3 py-2 text-sm"
           >
             <option value="">All Types</option>
             <option value="APARTMENT">Apartment</option>
@@ -168,16 +173,16 @@ const Units = () => {
       </div>
 
       {loading ? (
-        <div className="rounded-xl border border-slate-200 bg-white p-10 text-center text-sm text-slate-500">
+        <div className="rounded-xl border dark:bg-zinc-900 dark:text-zinc-400 border-slate-200 bg-white p-10 text-center text-sm text-slate-500">
           Loading units...
         </div>
       ) : units.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-slate-300 bg-white p-10 text-center">
+        <div className="rounded-xl dark:bg-zinc-900 dark:text-zinc-400 border border-dashed border-slate-300 bg-white p-10 text-center">
           <h2 className="text-sm font-semibold text-slate-700">
             No units found
           </h2>
 
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm dark:bg-zinc-900 dark:text-zinc-400 text-slate-400">
             No units match the selected filters.
           </p>
 
