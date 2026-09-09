@@ -1,5 +1,4 @@
 import { useAuth } from "../../context/AuthContext.jsx";
-import ThemeToggle from "../theme/ThemeToggle.jsx";
 
 const Topbar = () => {
   const { user, logout } = useAuth();
