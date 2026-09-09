@@ -43,7 +43,8 @@ const Sidebar = () => {
   );
 
   return (
-    <aside className="flex h-screen w-64 shrink-0 flex-col border-r border-slate-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
+    <aside className="flex h-full w-64 shrink-0 flex-col border-r border-slate-200 bg-white dark:border-zinc-800 dark:bg-zinc-950">
+      {" "}
       <div className="flex h-16 shrink-0 items-center border-b border-slate-200 px-6 dark:border-zinc-800">
         <div>
           <h1 className="text-lg font-bold text-slate-900 dark:text-zinc-100">
@@ -54,7 +55,6 @@ const Sidebar = () => {
           </p>
         </div>
       </div>
-
       <nav className="min-h-0 flex-1 overflow-y-auto p-4">
         <p className="mb-3 px-3 text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-zinc-500">
           Main Menu
@@ -80,7 +80,6 @@ const Sidebar = () => {
           ))}
         </div>
       </nav>
-
       <div className="shrink-0 border-t border-slate-200 p-4 dark:border-zinc-800">
         <div className="rounded-lg bg-slate-50 p-3 dark:bg-zinc-900">
           <p className="text-xs text-slate-400 dark:text-zinc-500">
