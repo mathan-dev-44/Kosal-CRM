@@ -51,7 +51,7 @@ const BookingDetails = () => {
   if (loading) {
     return (
       <div className="p-6">
-        <div className="rounded-xl border border-slate-200 bg-white p-10 text-center text-sm text-slate-500">
+        <div className="rounded-xl border dark:text-zinc-400 border-slate-200 bg-white p-10 text-center text-sm text-slate-500">
           Loading booking...
         </div>
       </div>
